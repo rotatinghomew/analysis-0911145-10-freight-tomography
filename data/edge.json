@@ -1,0 +1,180 @@
+{
+  "paths": [
+    {
+      "id": "ae-x",
+      "od": "a-east",
+      "edges": [
+        "a-h",
+        "h-x",
+        "x-e"
+      ],
+      "allowed": [
+        1,
+        10
+      ]
+    },
+    {
+      "id": "ae-y",
+      "od": "a-east",
+      "edges": [
+        "a-h",
+        "h-y",
+        "y-e"
+      ],
+      "allowed": [
+        1,
+        10
+      ]
+    },
+    {
+      "id": "as-x",
+      "od": "a-south",
+      "edges": [
+        "a-h",
+        "h-x",
+        "x-s"
+      ],
+      "allowed": [
+        1,
+        10
+      ]
+    },
+    {
+      "id": "be-x",
+      "od": "b-east",
+      "edges": [
+        "b-h",
+        "h-x",
+        "x-e"
+      ],
+      "allowed": [
+        1,
+        10
+      ]
+    },
+    {
+      "id": "be-y",
+      "od": "b-east",
+      "edges": [
+        "b-h",
+        "h-y",
+        "y-e"
+      ],
+      "allowed": [
+        1,
+        10
+      ]
+    },
+    {
+      "id": "bs-y",
+      "od": "b-south",
+      "edges": [
+        "b-h",
+        "h-y",
+        "y-s"
+      ],
+      "allowed": [
+        1,
+        10
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "id": "a",
+      "edge": "a-h",
+      "measure": "boxes",
+      "observed": 5,
+      "availability": 1.0,
+      "holdout": false
+    },
+    {
+      "id": "b",
+      "edge": "b-h",
+      "measure": "boxes",
+      "observed": 120,
+      "availability": 0.8,
+      "holdout": false
+    },
+    {
+      "id": "x",
+      "edge": "h-x",
+      "measure": "trucks",
+      "observed": 4,
+      "availability": 1.0,
+      "boxes_per_truck": [
+        30,
+        65
+      ],
+      "holdout": false
+    },
+    {
+      "id": "y",
+      "edge": "h-y",
+      "measure": "boxes",
+      "observed": null,
+      "availability": null,
+      "holdout": false
+    },
+    {
+      "id": "e",
+      "edge": "x-e",
+      "measure": "boxes",
+      "observed": 150,
+      "availability": 1.0,
+      "holdout": true
+    }
+  ],
+  "samples": [
+    {
+      "path": "ae-x",
+      "observed_boxes": 24,
+      "inclusion_band": [
+        0.15,
+        0.5
+      ],
+      "merchant_group": "large"
+    },
+    {
+      "path": "ae-y",
+      "observed_boxes": 4,
+      "inclusion_band": [
+        0.05,
+        0.2
+      ],
+      "merchant_group": "small"
+    },
+    {
+      "path": "be-x",
+      "observed_boxes": 12,
+      "inclusion_band": [
+        0.1,
+        0.3
+      ],
+      "merchant_group": "large"
+    }
+  ],
+  "day": 3,
+  "known_bounds": [
+    {
+      "id": "all",
+      "coefficients": {
+        "a-east": 1,
+        "a-south": 1,
+        "b-east": 1,
+        "b-south": 1
+      },
+      "lower": 280,
+      "upper": 380
+    }
+  ],
+  "closure": {
+    "edges": [
+      "h-x"
+    ],
+    "reroute_band": [
+      0.4,
+      1.0
+    ]
+  }
+}
