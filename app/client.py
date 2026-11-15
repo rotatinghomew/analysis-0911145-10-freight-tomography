@@ -10,5 +10,8 @@ def request(base, route, payload=None):
         return json.load(response)
 
 
-def analysis(base, case='standard', **options):
-    return request(base, '/infer', {'case': case, **options})
+def analysis(base, case='standard', closure=None):
+    payload = {'case': case}
+    if closure is not None:
+        payload['closure'] = closure
+    return request(base, '/infer', payload)

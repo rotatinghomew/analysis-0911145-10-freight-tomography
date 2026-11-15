@@ -35,5 +35,16 @@ class TransportTests(unittest.TestCase):
         self.assertEqual(caught.exception.code, 400)
         caught.exception.close()
 
+    def test_infer_route_and_invalid_closure_are_bad_request(self):
+        result = request(self.base, '/infer', {'case': 'standard'})
+        self.assertEqual(result['snapshot'], load_case('standard')['_snapshot'])
+        self.assertIn('od', result)
+        with self.assertRaises(HTTPError) as caught:
+            request(self.base, '/infer',
+                    {'case': 'standard',
+                     'closure': {'edges': ['missing-edge'], 'reroute_band': None}})
+        self.assertEqual(caught.exception.code, 400)
+        caught.exception.close()
+
     def test_snapshot_changes_with_content(self):
         self.assertNotEqual(load_case('standard')['_snapshot'], load_case('edge')['_snapshot'])
